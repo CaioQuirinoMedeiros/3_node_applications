@@ -5,7 +5,7 @@ const darkskyKey = "9f0ad163820506c645c847fac6a31fa6";
 const getWeather = async ({ latitude, longitude }) => {
   try {
     const { data } = await axios.get(
-      `https://api.darksky.net/forecast/${darkskyKey}/${latitude},${longitude}?units=si&lang=pt`
+      `https://api.darksky.net/forecast/${darkskyKey}/${latitude},${longitude}?units=si`
     );
 
     const weather = data.currently;

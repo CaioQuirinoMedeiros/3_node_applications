@@ -6,6 +6,8 @@ const forecast = require("./utils/forecast");
 
 const app = express();
 
+const PORT = process.env.PORT || 3000;
+
 const publicPath = path.join(__dirname, "..", "public");
 const viewsPath = path.join(__dirname, "..", "templates", "views");
 const partialsPath = path.join(__dirname, "..", "templates", "partials");
@@ -16,10 +18,7 @@ hbs.registerPartials(partialsPath);
 app.use(express.static(publicPath));
 
 app.get("/", (req, res) => {
-  res.render("index", {
-    title: "Weather",
-    name: "Caio"
-  });
+  res.render("index");
 });
 
 app.get("/help", (req, res) => {
@@ -31,25 +30,22 @@ app.get("/about", (req, res) => {
 });
 
 app.get("/weather", async (req, res) => {
-  console.log(req.query);
   const query = req.query.search;
   const location = await geocode(query);
 
   if (location.error) {
-    return res.send(location.error);
+    return res.send(location);
   }
 
   const weather = await forecast(location);
 
-  console.log(weather);
-
-  res.send(weather);
+  res.send({ location, weather });
 });
 
 app.get("/*", (req, res) => {
   res.render("404");
 });
 
-app.listen(3000, () => {
-  console.log("Server is up");
+app.listen(PORT, () => {
+  console.log(`Server is up in port ${PORT}`);
 });

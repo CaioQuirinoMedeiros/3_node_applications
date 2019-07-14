@@ -18,6 +18,18 @@ html {
   justify-content: center;
 }
 
+button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+input {
+  border: none;
+  outline: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -49,6 +61,117 @@ a:hover {
 
 h1 {
   font-size: 5rem;
+}
+
+section {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 5rem 0;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: #777;
+  height: 4.4rem;
+  border-radius: 2.2rem;
+  padding: 0.2rem;
+}
+
+input {
+  height: 4rem;
+  border-radius: 2rem;
+  flex: 1;
+  padding-left: 2rem;
+  font-size: 1.6rem;
+  color: #333;
+  font-weight: bold;
+}
+
+button {
+  height: 4rem;
+  text-transform: uppercase;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
+  font-weight: bold;
+  padding: 0 2rem;
+  letter-spacing: 1.2px;
+  font-size: 1.6rem;
+  color: #fff897;
+  transition: all 0.2s;
+}
+button:hover {
+  color: #ffd153;
+}
+
+.weather-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.weather-container h2 {
+  width: 100%;
+  text-align: center;
+  font-size: 2rem;
+  padding: 2.5rem 0;
+  position: relative;
+}
+
+.icon-temperature {
+  padding-bottom: 2.5rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-temperature canvas {
+  margin-right: 1rem;
+}
+
+.icon-temperature h3 {
+  font-size: 5.5rem;
+  margin-left: 1rem;
+}
+
+.lds-circle {
+  position: absolute;
+  display: none;
+  transform: translateZ(1px);
+}
+.lds-circle > div {
+  display: inline-block;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border-radius: 50%;
+  background: #555;
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+@keyframes lds-circle {
+  0%,
+  100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+  0% {
+    transform: rotateY(0deg);
+  }
+  50% {
+    transform: rotateY(1800deg);
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+  }
+  100% {
+    transform: rotateY(3600deg);
+  }
 }
 
 footer {
