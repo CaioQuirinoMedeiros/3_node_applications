@@ -13,7 +13,10 @@ router.post("/users", async (req, res) => {
 
     return res.status(201).send({ user, token });
   } catch (err) {
-    return res.status(400).send({ error: "Couldn't create user" });
+    console.log(err);
+    return res
+      .status(err.status || 400)
+      .send({ error: "Couldn't create user" });
   }
 });
 
