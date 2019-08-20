@@ -1,5 +1,8 @@
 const express = require("express");
+const multer = require("multer");
+
 const router = new express.Router();
+
 const User = require("../models/user");
 const auth = require("../middleware/auth");
 
@@ -103,6 +106,22 @@ router.post("/users/logoutAll", auth, async (req, res) => {
   } catch (err) {
     return res.status(400).send({ error: "Couldn't logout all" });
   }
+});
+
+const upload = multer({
+  dest: "images",
+  limits: { fileSize: 2000000 },
+  fileFilter: (req, file, cb) => {
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
+      return cb(new Error("Please upload a image"));
+    }
+
+    return cb(undefined, true);
+  }
+});
+
+router.post("/users/me/avatar", upload.single("avatar"), (req, res) => {
+  res.send();
 });
 
 module.exports = router;
