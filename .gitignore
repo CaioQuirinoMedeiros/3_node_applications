@@ -1,3 +1,4 @@
 notes/node_modules
 web-server/node_modules
 task-manager/node_modules
+task-manager/.env
